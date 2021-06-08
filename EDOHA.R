@@ -121,8 +121,7 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
   if(i>maxiter){
     warning(paste("the real exit converge criteria is ",criteria, " instead of ",convergence ))
   }
-  
-
+ 
   a=list()
   b=list()
   vv=list()
@@ -210,3 +209,18 @@ update.tilt=function(Theta, W.theta, Z, W.Z, V, W.V, rho){
     }
   return(list(Theta.tilt,Z.tilt,V.tilt))
 }
+
+penalty.as.matrix <-function(lambda,p,penalize.diagonal)
+  {
+    # for matrix penalties:  check dim and symmetry:
+    if(is.matrix(lambda))
+    {
+      if(sum(lambda!= t(lambda))>0) {stop("error: penalty matrix is not symmetric")}
+      if(sum(abs(dim(lambda)-p))!=0 ) {stop("error: penalty matrix has wrong dimension")}
+    }
+    # for scalar penalties: convert to matrix form:
+    if(length(lambda)==1) {lambda=matrix(lambda,p,p)}
+    # apply the penalize.diagonal argument:
+    if(!penalize.diagonal) {diag(lambda)=0}
+    return(lambda)
+}  
