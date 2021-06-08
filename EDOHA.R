@@ -62,7 +62,7 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
     }
     oldTheta=Theta
     
-    #update theta(k)
+    #update Theta
     for(k in 1:K){
       Theta[[k]]=update.theta(S[[k]], Theta.tilt[[k]], W.theta[[k]],ns[[k]],rho)
     }
@@ -75,11 +75,9 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
        V[[k]]=update.V(V.tilt[[k]],V.tilt.tilt[[k]],W.V[[k]],W.V.tilt[[k]],lambda3,lambda4,2*rho)
     }
     
-    
-    
+   
     #update V.tilt.tilt
     V.tilt.tilt=update.Z(V,W.V.tilt,0,lambda5,rho,penalizeD,penalty)
-    
     
     #update Theta.tilt, Z.tilt, V.tilt
     res=update.tilt(Theta,W.theta,Z,W.Z,V,W.V,rho)
@@ -87,7 +85,7 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
     Z.tilt=res[[2]]
     V.tilt=res[[3]]
     
-    #udate W.theta
+    #update W.theta
     for(k in 1:K){
       W.theta[[k]]=W.theta[[k]]+Theta[[k]]-Theta.tilt[[k]]
     }
@@ -117,7 +115,7 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
   for(k in 1:K){
     
     Z[[k]]=ifelse(abs(Z[[k]])<1e-5, 0, Z[[k]])
-    V[[k]]=ifelse(abs(V[[k]])<1e-5, 0, V[[k]])
+    V[[k]]=ifelse(abs(V.tilt.tilt[[k]])<1e-5, 0, V.tilt.tilt[[k]])
     Theta[[k]]=Z[[k]]+V[[k]]+t(V[[k]])
   }
   if(i>maxiter){
