@@ -115,7 +115,7 @@ EDOHA=function(S,ns,lambda1,lambda2,lambda3,lambda4,lambda5,convergence=1e-10,ma
   for(k in 1:K){
     
     Z[[k]]=ifelse(abs(Z[[k]])<1e-5, 0, Z[[k]])
-    V[[k]]=ifelse(abs(V.tilt.tilt[[k]])<1e-5, 0, V.tilt.tilt[[k]])
+    V[[k]]=ifelse(abs(V[[k]])<1e-5, 0, V[[k]])
     Theta[[k]]=Z[[k]]+V[[k]]+t(V[[k]])
   }
   if(i>maxiter){
