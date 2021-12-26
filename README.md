@@ -1,7 +1,6 @@
-Joint reconstruction of multiple microbial interaction networks from multiple conditions
+Extended Graphical Lasso for Multiple Interaction Networks for High Dimensional Omics Data
 
 Abstract 
-
-Motivation: Microorganisms living on and inside human bodies constitute complex ecological interaction webs, which may have positive or negative effects on the host. Constructing microbiome-wide microbial association networks based on data sets from different conditions may help us understand human health and disease. 
-
-Results: In this paper, we propose a novel method, the extended joint hub graphical lasso(EDOHA), to identify multiple microbial networks with common and speciﬁc hub microbes. To be speciﬁc, we construct a penalized log likelihood optimization problem using log ratios of count or proportion data and solve it with an alternating direction method of multipliers(ADMM) algorithm. The performance of the simulated studies shows that EDOHA has remarkable advantages in recognizing hub microbes than the existing comparable methods. We also apply our method to mouse skin microbial data from three conditions. Both common and conditions-speciﬁc hub microbes are identiﬁed with higher accuracy.
+There has been a spate of interest in association networks in biological and medical research, for example, genetic interaction networks. In this paper, we propose a novel
+method, the extended joint hub graphical lasso (EDOHA), to estimate multiple related interaction networks for high dimensional omics data across multiple distinct classes. To
+be specific, we construct a convex penalized log likelihood optimization problem and solve it with an alternating direction method of multipliers (ADMM) algorithm. The proposed method can also be adapted to estimate interaction networks for high dimensional compositional data such as microbial interaction networks. The performance of the proposed method in the simulated studies shows that EDOHA has remarkable advantages in recognizing class-specific hubs than the existing comparable methods.
